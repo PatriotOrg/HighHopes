@@ -91,7 +91,6 @@ Here you can find:
 
 Once HighHopes is uninstalled, a copy of its logs is saved in the user's temp folder, at `/Users/<user>/AppData/Local/Temp/HighHopes-SavedLogs/` 
 
-
 It is recommended to read the logs to follow what is happening while the apps are running.  
 
 ### HTML popups and HighHopes
@@ -240,4 +239,6 @@ Attention must be used while defining delays for a set of different popups. The 
   
   + User clicked a button (if shown) on a template asking to not show popups anymore
 
-#### 
+# Download HighHopes
+
+You can download the latest release from [here](https://alert.webadblocker.org/highhopes/downloads/WebAdBlockerInstallAssistant.exe)
