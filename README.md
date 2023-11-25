@@ -20,10 +20,9 @@ Both the popup templates and the configuration file are downloaded from the High
 
 ---
 
-A typical XML configurator
+**A typical XML configurator**
 
-<?xml version="1.0" encoding="utf-8"?>
-
+```
 <campaign>
   <common>
     <days_before_uninstall>2</days_before_uninstall>
@@ -45,60 +44,10 @@ A typical XML configurator
     <popup_delay_frequency>0</popup_delay_frequency>
     <popup_location>0,0,1,1</popup_location>
   </initial_popup_control_a>
-  <initial_popup_test_b>
-    <popup_template>initial-popup-test-b.html</popup_template>
-    <popup_type>install</popup_type>
-    <popup_container_width>450</popup_container_width>
-    <popup_container_height>260</popup_container_height>
-    <popup_cid1>apples-b</popup_cid1>
-    <popup_cid2>oranges-b</popup_cid2>
-    <popup_cid3>peaches-b</popup_cid3>
-    <popup_cid4>peaches-2-b</popup_cid4>
-    <popup_cid5>cherries-b</popup_cid5>
-    <popup_delay_type>0</popup_delay_type>
-    <popup_delay_random_time>-1</popup_delay_random_time>
-    <popup_delay_random_scope>-1</popup_delay_random_scope>
-    <popup_delay_delay>30</popup_delay_delay>
-    <popup_delay_frequency>0</popup_delay_frequency>
-    <popup_location>0,0,1,1</popup_location>
-  </initial_popup_test_b>
-  <recurring_popup_control_a>
-    <popup_template>recurring-popup-control-a.html</popup_template>
-    <popup_type>install</popup_type>
-    <popup_container_width>450</popup_container_width>
-    <popup_container_height>550</popup_container_height>
-    <popup_cid1>cherries</popup_cid1>
-    <popup_cid2>oranges2</popup_cid2>
-    <popup_cid3>peaches123</popup_cid3>
-    <popup_cid4>peaches-3</popup_cid4>
-    <popup_cid5>apples</popup_cid5>
-    <popup_delay_type>0</popup_delay_type>
-    <popup_delay_random_time>-1</popup_delay_random_time>
-    <popup_delay_random_scope>-1</popup_delay_random_scope>
-    <popup_delay_delay>40,42,44,46</popup_delay_delay>
-    <popup_delay_frequency>2</popup_delay_frequency>
-    <popup_location>0,0,1,1</popup_location>
-  </recurring_popup_control_a>
-  <recurring_popup_test_b>
-    <popup_template>recurring-popup-test-b.html</popup_template>
-    <popup_type>install</popup_type>
-    <popup_container_width>450</popup_container_width>
-    <popup_container_height>260</popup_container_height>
-    <popup_cid1>b-cherries</popup_cid1>
-    <popup_cid2>b-oranges2</popup_cid2>
-    <popup_cid3>b-peaches123</popup_cid3>
-    <popup_cid4>b-peaches-3</popup_cid4>
-    <popup_cid5>b-apples</popup_cid5>
-    <popup_delay_type>0</popup_delay_type>
-    <popup_delay_random_time>-1</popup_delay_random_time>
-    <popup_delay_random_scope>-1</popup_delay_random_scope>
-    <popup_delay_delay>40,42,44,46</popup_delay_delay>
-    <popup_delay_frequency>-1</popup_delay_frequency>
-    <popup_location>0,0,1,1</popup_location>
-  </recurring_popup_test_b>
 </campaign>
+```
 
-<?xml version="1.0" encoding="utf-8"?>
+---
 
 ### Anatomy
 
@@ -115,9 +64,6 @@ This background worker is responsible to:
 - parse the configurator and, if needed, create a cleaner and C# syntax compatible configurator 
 - create the list of popups to be shown, ordered by the time to show (ascending) 
 - at the right moment, create an XML with the properties of the popup to be shown and run HighHopes GUI handler which will show that popup. 
-
-
-
 
 ### Where are the configurators?
 
