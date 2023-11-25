@@ -62,7 +62,7 @@ Both the popup templates and the configuration file are downloaded from the *Hig
 *HighHopesWorkerService* starts automatically at Windows startup.  
 This background worker is responsible to: 
 
-- get the remote XML configurator (immediately at start and every 6 hours) 
+- get the remote XML configurator and templates (immediately at start and every 6 hours) 
 - parse the configurator and, if needed, create a cleaner and C# syntax compatible configurator 
 - create the list of popups to be shown, ordered by the time to show (ascending) 
 - at the right moment, create an XML with the properties of the popup to be shown and run *HighHopes* GUI handler which will show that popup. 
