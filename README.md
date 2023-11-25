@@ -96,8 +96,10 @@ It is recommended to read the logs to follow what is happening while the apps ar
 ### HTML popups and HighHopes
 
 As already mentioned, popups are regular HTML files and can contain any link to style files, libraries and specific javascript code. For example, for the creation of popup "pages", Bootstrap, JQuery and so on can be used.
+
 When creating templates, special care should be used if you want to use links to external pages (urls) or want to trigger an action when a button is clicked.
-Although HighHopes can show not only the popup, but also navigate to any web page, its purpose is to always show only the promotional message and not to allow navigation to other web addresses.
+
+Although *HighHopes* can show not only the popup, but also navigate to any web page, its purpose is to always show only the promotional message and not to allow navigation to other web addresses.
 
 To remedy this, *HighHopes* imposes some simple rules to be followed when constructing templates, so that links to other web addresses are handled by *HighHopes* and not by the popup's web engine, or actions on clicking a button should not be handled only by the associated javascript code. 
 
@@ -127,7 +129,7 @@ Special care should be used in constructing the HTML code for the "**OPENURL**" 
 
 ---
 
-**Note**: This command is currently not used directly, in the javascript code associated with the popup, but will certainly be in future implementations. In the current version, the request to open web pages is handled directly by the popup engine in conjunction with *HighHopes* event handling.
+**Note**: This command is currently not used directly in the javascript code associated with the popup, but will certainly be in future implementations. In the current version, the request to open web pages is handled directly by the popup engine in conjunction with *HighHopes* event handling.
 
 ---
 
