@@ -83,13 +83,13 @@ You can find those files in `C:\ProgramData\Patriot-HighHopes\workdir\` and `C:\
 *HighHopes* working folder is: `C:\ProgramData\Patriot-HighHopes\workdir\`  
 Here you can find: 
 
-- the original configurators and templates from server (XML) in `~\install` and `~\buy`subfolders, 
+- the original configurators and templates downloaded from server (XML) in `~\install` and `~\buy`subfolders, 
 
 - the logs (NWSLogxxx.txt for *HighHopesWorkerService* and HHLogxxx.txt for *HighHopes GUI*) 
 
 - and the *SQLite* database used by the apps, in `~\db` subfolder.  
 
-Once HighHopes is uninstalled, a copy of its logs is saved in the user's temp folder, at `/Users/<user>/AppData/Local/Temp/HighHopes-SavedLogs/` 
+Once *HighHopes* is uninstalled, a copy of its logs is saved in the user's temp folder, at `/Users/<user>/AppData/Local/Temp/HighHopes-SavedLogs/` 
 
 It is recommended to read the logs to follow what is happening while the apps are running.  
 
