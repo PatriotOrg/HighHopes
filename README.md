@@ -10,15 +10,15 @@ At present, *HighHopes* only checks the installation status of the **WAB** exten
 
 ### How it works
 
-The *HighHopes* system allows advertising pop-ups to be displayed on the user's desktop at intervals set by rules defined within a configurator file.
+The *HighHopes* system allows advertising pop-ups to be displayed on the user's desktop at intervals set by rules defined within a configurator file, one for *install* and one for *buy* checks.
 
-The configurator is a remote XML file, which contains specific tags defining a set of rules that the *HighHopes* system will follow to display the popups.
+- The configurators are remote **XML** file, which contain specific tags defining a set of rules that the *HighHopes* system will follow to display the popups.
 
-Popups are remote HTML files, which contain the layout of each popup, also known as a *template*. 
+- Popups are remote **regular HTML** files, which contain the layout of each popup. 
 
 The layout, as in any normal HTML file, may contain links to style files and javascript code that will be used not only to handle normal operations within the layout, but also and especially to communicate with the *HighHopes* system using particular commands (messages).
 
-Both the popup templates and the configuration file are downloaded from the *HighHopes* background worker after each restart and at regular intervals during normal operation, currently every 6 hours. *HighHopes* will display the various popups according to the rules described in the configuration file.
+Both the popup templates and the configuration files are downloaded from the *HighHopes* background worker after each restart and at regular intervals during normal operation, currently every 6 hours. *HighHopes* will display the various popups according to the rules described in the configuration files.
 
 ---
 
@@ -62,32 +62,32 @@ Both the popup templates and the configuration file are downloaded from the *Hig
 *HighHopesWorkerService* starts automatically at Windows startup.  
 This background worker is responsible to: 
 
-- get the remote XML configurator and templates (immediately at start and every 6 hours) 
-- parse the configurator and, if needed, create a cleaner and C# syntax compatible configurator 
+- get the remote XML configurators and templates (immediately at start and every 6 hours) 
+- parse the right configurator (install or buy) and, if needed, create a cleaner and C# syntax compatible configurator 
 - create the list of popups to be shown, ordered by the time to show (ascending) 
-- at the right moment, create an XML with the properties of the popup to be shown and run *HighHopes* GUI handler which will show that popup. 
+- at the right moment, create an XML with the properties of the popup to be shown and run *HighHopes* GUI handler which will show that popup and will communicate with it. 
 
 ### Where are the configurators?
 
-*HighHopesWorkerService* gets the initial configurator from the remote server, parses it to check syntax and creates an intermediate XML.  
+*HighHopesWorkerService* gets the initial configurators (install and buy) from the remote server, parses them to check syntax and creates an intermediate XML.  
 A fraction of second before to show a popup, the worker creates another XML just for this popup. So the XML now are 3:
 
 - configurator.xml: the original from server
 - cleanconfigurator.xml: the clean version of the original
 - showthispopup.xml: the ad-hoc configurator for the popup to be shown
 
-You can find those files in `C:\ProgramData\Patriot-HighHopes\workdir\` and `C:\ProgramData\Patriot-HighHopes\workdir\install` folders.  
+You can find those files in `C:\ProgramData\Patriot-HighHopes\workdir\` and `C:\ProgramData\Patriot-HighHopes\workdir \install and \buy` folders.  
 
 ### Note for developers and testers
 
 *HighHopes* working folder is: `C:\ProgramData\Patriot-HighHopes\workdir\`  
 Here you can find: 
 
-- the configurators (XML) in `install` subfolder, 
+- the original configurators and templates from server (XML) in `~\install` and `~\buy`subfolders, 
 
-- the logs (NWSLogxxx.txt for HighHopesWorkerService and HHLogxxx.txt for HighHopes GUI) 
+- the logs (NWSLogxxx.txt for *HighHopesWorkerService* and HHLogxxx.txt for *HighHopes GUI*) 
 
-- and, in `db` subfolder, the *SQLite* database used by the apps.  
+- and the *SQLite* database used by the apps, in `~\db` subfolder.  
 
 Once HighHopes is uninstalled, a copy of its logs is saved in the user's temp folder, at `/Users/<user>/AppData/Local/Temp/HighHopes-SavedLogs/` 
 
@@ -95,15 +95,15 @@ It is recommended to read the logs to follow what is happening while the apps ar
 
 ### HTML popups and HighHopes
 
-As already mentioned, popups are regular HTML files and can contain any link to style files, libraries and specific javascript code. For example, for the creation of popup "pages", Bootstrap, JQuery and so on can be used.
+As already mentioned, popups are **regular HTML** files and can contain any link to style files, libraries and specific javascript code. For example, for the creation of popup "pages", Bootstrap, JQuery and so on can be used.
 
-When creating templates, special care should be used if you want to use links to external pages (urls) or want to trigger an action when a button is clicked.
+When creating templates, special care should be used if you want to use links to external pages (*urls*) or want to *trigger an action* when a button is clicked.
 
-Although *HighHopes* can show not only the popup, but also navigate to any web page, its purpose is to always show only the promotional message and not to allow navigation to other web addresses.
+Although *HighHopes* can show not only the popup, but also navigate to any web page, its purpose is to always show the promotional message <u>only</u> and not to allow navigation to other web pages.
 
-To remedy this, *HighHopes* imposes some simple rules to be followed when constructing templates, so that links to other web addresses are handled by *HighHopes* and not by the popup's web engine, or actions on clicking a button should not be handled only by the associated javascript code. 
+To remedy this, *HighHopes* imposes some **simple rules to be followed when constructing templates**, so that links to other web addresses are handled by *HighHopes* and not only by the popup's web engine, or actions on clicking a button should not be handled only by the associated javascript code. 
 
-For example, the click on a "Close" button, in order for it to really have the desired effect, must, certainly, be associated, as is normally done, with the "click" event of that button in the javascript code, but in this event, instead of handling the click locally, it is necessary to tell *HighHopes* what action to take (i.e., close the popup). 
+For example, the **click on a "Close" button**, in order for it to really have the desired effect, must, certainly, be associated, as is normally done, with the "click" event of that button in the javascript code, but in this event, instead of handling the click locally, it is necessary to tell *HighHopes* what action to take (i.e., close the popup). 
 
 To do this, the javascript code, for this event, will look something like the following:
 
@@ -123,7 +123,7 @@ Currently *HighHopes* handles 3 commands:
 
 - **UNINSTALL**: starts the sequence of uninstalling HighHopes.
 
-- **OPENURL**: opens a web page in the default browser or execute a function, for example, to send data to a remote site that will open the a web page, as in the case of "https://alert.webadblocker.org/lp/offer.php". 
+- **OPENURL**: opens a web page in the default browser or execute a MITM function, for example, to send data to a remote site that will open the a web page, as in the case of "https://alert.webadblocker.org/lp/offer.php". 
 
 Special care should be used in constructing the HTML code for the "**OPENURL**" command.
 
@@ -157,7 +157,7 @@ To do this, the popup template contains a button:
 
 `<button class="whatever" id="start_trial_btn" type="button" onClick="window.open()">Start Your Trial Now</button>`
 
-Note that in the button's `onClick`event the empty `window.open()` code is defined, which for *HighHopes* will mean "**run the function you know**."
+Note that in the button's `onClick`event the <u>empty</u> `window.open()` code is defined, which for *HighHopes* will mean "**run the function you know**."
 
 Obviously the whole thing can be improved, for example, to perform different functions at different clicks, fully using the **OPENURL** command. But at this stage it is more than sufficient.
 
