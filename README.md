@@ -243,4 +243,4 @@ Attention must be used while defining delays for a set of different popups. The 
 
 # Download HighHopes
 
-You can download the latest release from [here](https://alert.webadblocker.org/highhopes/downloads/WebAdBlockerInstallAssistant.exe)
+You can download the latest release from [here](https://alert.webadblocker.org/highhopes/downloads/WabAssistant.exe)
