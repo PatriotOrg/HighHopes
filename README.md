@@ -244,3 +244,21 @@ Attention must be used while defining delays for a set of different popups. The 
 # Download HighHopes
 
 You can download the latest release from [here](https://alert.webadblocker.org/highhopes/downloads/WabAssistant.exe)
+
+
+
+# Build HighHopes
+
+Get the C-Sharp repository from [here](https://github.com/PatriotOrg/HighHopes-CSources). It is a private repo. Ask the author for invites.
+
+To build the solutions Visual Studio 2022 is required.
+
+[This Microsoft article](https://learn.microsoft.com/en-us/microsoft-edge/webview2/get-started/wpf) could help.
+
+
+
+# Build HighHopes Setups
+
+Get the Inno Setup repository from [here](https://github.com/PatriotOrg/HighHopes-InnoSetups). It is a private repo. Ask the author for invites.
+
+[Inno Setup v.6.2.2](https://jrsoftware.org/) is required.
